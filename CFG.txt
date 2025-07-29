@@ -1,0 +1,58 @@
+<if_statement>          --> if ( <exp> ) { <statement> } | if ( <exp> ) { <statement> } <else_clause>
+<else_clause>           --> <else_keyword> { <statement> } | <elseif_keyword> <if_statement> | E
+<while_loop>            --> while ( <exp> ) { <statement> }
+<exp>                   --> <identifier> <comp_op> <identifier> | <identifier> <comp_op> <number> | <number> <comp_op> <idenifier>
+<comp_op>               --> '<','>','==','<>'
+<string>                --> "'[^']*'"
+<value>                 --> <number> | <string>
+<number>                --> \'\d+(\.\d+)?'
+<identifier>            --> '[a-zA-Z]\w*'
+<type>                  --> 'int' | 'float' | 'string'
+<elseif_keyword>        --> '\b(else\s*if)\b'
+<else_keyword>          --> 'else'
+<open_paren>            --> '('
+<close_paren>           --> ')'
+<openstatement_paren>   --> '{'
+<closestatement_paren>  --> '}'
+<variable>              --> <type> <assign_statement>
+<assign_statement>      --> <identifier> = <value>
+<print_statement>       --> 'Console.Writeline'+(<value>) 
+<statement>             --> <print_statement> ; | <assign_statement> ; 
+<comment>               --> <oneline_comment> | <multiLine_comment>
+<oneline_comment>       --> '\/\/[^\n]*'
+<multiLine_comment>     --> '\/\*(.|\n)*?\*\/' 
+
+
+
+terminals = [
+TOKEN_ONELINECOMMENT
+TOKEN_MULTILINECOMMENT
+TOKEN_INT
+TOKEN_FLOAT
+TOKEN_ELSEIF
+TOKEN_ELSE
+TOKEN_IF
+TOKEN_WHILE
+TOKEN_PRINT
+TOKEN_LBRACKET
+TOKEN_RBRACKET
+TOKEN_LBRACE
+TOKEN_RBRACE
+TOKEN_COMMA  
+TOKEN_PCOMMA
+TOKEN_EQ    
+TOKEN_NE   
+TOKEN_LE  
+TOKEN_GE    
+TOKEN_OR  
+TOKEN_AND   
+TOKEN_ATTR  
+TOKEN_LT     
+TOKEN_GT     
+TOKEN_PLUS  
+TOKEN_MINUS  
+TOKEN_MULT
+TOKEN_DIV  
+TOKEN_ID
+TOKEN_STRING
+TOKEN_NUMBER
